@@ -1,8 +1,28 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import React from 'react';
 import Colors from '../../Utils/Colors';
+import * as WebBrowser from "expo-web-browser";
+import { useOAuth } from "@clerk/clerk-expo";
+import { useWarmUpBrowser } from '../../hooks/useWarmUpBrowser';
+WebBrowser.maybeCompleteAuthSession();
 
 export default function Login() {
+  useWarmUpBrowser();
+  const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+  const onPress = React.useCallback(async () => {
+    try {
+      const { createdSessionId, signIn, signUp, setActive } =
+        await startOAuthFlow();
+ 
+      if (createdSessionId) {
+        setActive({ session: createdSessionId });
+      } else {
+        // Use signIn or signUp for next steps such as MFA
+      }
+    } catch (err) {
+      console.error("OAuth error", err);
+    }
+  }, []);
   return (
     <View style={{alignItems:'center'}}>
       <Image source={require('./../../../assets/images/login3.jpg')}
@@ -10,9 +30,9 @@ export default function Login() {
       />
       <View style={styles.subContainer}>
         <Text style={styles.textHeader}>Simplifying Home Care, One Tap at a Time!</Text>
-        <Text style={styles.textDesc}>Effortlessly book top-notch cleaning services with skilled professionals, all through our intuitive app. Enjoy a sparkling clean home without the stress, only with Lely Cleaning.</Text>
+        <Text style={styles.textDesc}>Effortlessly book top-notch cleaning services with skilled professionals, all through this app. Enjoy a sparkling clean home without the stress, only with Lely Cleaning.</Text>
 
-        <TouchableOpacity style={styles.button} onPress={()=>console.log("Button Click")}>
+        <TouchableOpacity style={styles.button} onPress={onPress}>
             <Text style={styles.buttonText}>Let's Start</Text>
         </TouchableOpacity>
       </View>
