@@ -13,7 +13,7 @@ export default function TabNavigation() {
   return (
     <Tab.Navigator screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: Colors.color4
+        tabBarActiveTintColor: Colors.blue
     }}>
         <Tab.Screen name='home' component={HomeScreen} 
         options={{
