@@ -5,6 +5,7 @@ import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-expo';
 import * as SecureStore from "expo-secure-store";
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigation from './App/Navigations/TabNavigation';
+import { useFonts } from 'expo-font';
 
 const tokenCache = {
   async getToken(key) {
@@ -24,6 +25,12 @@ const tokenCache = {
 };
 
 export default function App() {
+  const [fontsLoaded, fontError] = useFonts({
+    'nunito': require('./assets/fonts/Nunito-Regular.ttf'),
+    'nunito-medium': require('./assets/fonts/Nunito-Medium.ttf'),
+    'nunito-semibold': require('./assets/fonts/Nunito-SemiBold.ttf'),
+    'nunito-bold': require('./assets/fonts/Nunito-Bold.ttf'),
+  });
   return (
     <ClerkProvider tokenCache={tokenCache} publishableKey='pk_test_bm90ZWQtc2VydmFsLTQ5LmNsZXJrLmFjY291bnRzLmRldiQ'>
       <View style={styles.container}>

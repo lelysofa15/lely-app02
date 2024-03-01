@@ -14,8 +14,8 @@ export default function Header() {
                 <Image source={{uri:user?.imageUrl}}
                 style={styles.userImage} />
                 <View >
-                    <Text style={{color:Colors.whiteBlue}}>Welcome,</Text>
-                    <Text style={{color:Colors.whiteBlue, fontSize: 20}}>{user.fullName}</Text>
+                    <Text style={{color:Colors.whiteBlue, fontFamily:'nunito'}}>Welcome,</Text>
+                    <Text style={{color:Colors.whiteBlue, fontSize: 20, fontFamily:'nunito'}}>{user.fullName}</Text>
                 </View>
             </View>
             <FontAwesome name="bookmark-o" size={27} color={Colors.whiteBlue} />
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: '85%',
         fontSize: 16,
+        fontFamily: 'nunito',
     },
     searchBarContainer: {
         marginTop: 15,

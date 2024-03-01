@@ -18,7 +18,7 @@ export default function TabNavigation() {
         <Tab.Screen name='home' component={HomeScreen} 
         options={{
             tabBarLabel:({color})=>(
-                <Text style={{color:color, fontSize:12,marginTop:-7}}>Home</Text>
+                <Text style={{color:color, fontSize:12,marginTop:-7, fontFamily:'nunito'}}>Home</Text>
             ),
             tabBarIcon: ({color, size})=>(
                 <FontAwesome name="home" size={size} color={color} />
@@ -27,7 +27,7 @@ export default function TabNavigation() {
         <Tab.Screen name='booking' component={BookingScreen} 
         options={{
             tabBarLabel:({color})=>(
-                <Text style={{color:color, fontSize:12,marginTop:-7}}>Booking</Text>
+                <Text style={{color:color, fontSize:12,marginTop:-7, fontFamily:'nunito'}}>Booking</Text>
             ),
             tabBarIcon: ({color, size})=>(
                 <FontAwesome name="bookmark" size={size} color={color} />
@@ -36,7 +36,7 @@ export default function TabNavigation() {
         <Tab.Screen name='profile' component={ProfileScreen} 
         options={{
             tabBarLabel:({color})=>(
-                <Text style={{color:color, fontSize:12,marginTop:-7}}>Profile</Text>
+                <Text style={{color:color, fontSize:12,marginTop:-7, fontFamily:'nunito'}}>Profile</Text>
             ),
             tabBarIcon: ({color, size})=>(
                 <FontAwesome name="user-circle" size={size} color={color} />
